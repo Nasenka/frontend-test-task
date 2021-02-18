@@ -1,23 +1,22 @@
 import classnames from 'classnames';
-//import PropTypes from 'prop-types';
 import React from 'react';
 
 import API from '../../api/products';
+import Cart from '../Cart';
 import OrderForm from '../OrderForm';
 import ProductList from '../ProductList';
-import Cart from '../Cart';
 
 import style from './App.module.css';
 
-class App extends React.Component {
-  render () {
-    const products = API.products;
+class App extends React.PureComponent {
+  render() {
+    const { products } = API;
 
     return (
       <div>
         <div className={style.header}>
           <div className={classnames(style.container, style.containerHeader)}>
-            <div className={style.cart}></div>
+            <div className={style.cart} />
           </div>
         </div>
         <ProductList products={products} />
