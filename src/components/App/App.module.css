@@ -13,14 +13,40 @@
 }
 
 .containerHeader {
+  display: flex;
   width: 100%;
 }
 
 .cart {
+  position: relative;
   margin: 0 50px 0 auto;
+}
+
+.cartIcon {
+  position: relative;
   width: 50px;
   height: 50px;
+  border: none;
   background: url('../../assets/images/shopping-cart.svg') no-repeat;
   background-size: 100%;
   cursor: pointer;
+}
+
+.cartIcon:focus {
+  outline: none;
+}
+
+.countItem {
+  position: absolute;
+  top: -3px;
+  right: -7px;
+  background: #eaeaea;
+  font-size: 12px;
+  line-height: 23px;
+  color: #cc2157;
+  border-radius: 50%;
+  width: 23px;
+  height: 23px;
+  text-align: center;
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, .3);
 }
