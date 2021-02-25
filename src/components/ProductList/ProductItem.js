@@ -6,9 +6,24 @@ import style from './ProductList.module.css';
 
 class ProductItem extends React.PureComponent {
   static propTypes = {
+    id: PropTypes.number.isRequired,
     price: PropTypes.number.isRequired,
     src: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
+    onClickOrder: PropTypes.func.isRequired,
+    onClickCart: PropTypes.func.isRequired,
+  };
+
+  handleClickOrder = () => {
+    const { onClickOrder, id } = this.props;
+
+    onClickOrder(id);
+  };
+
+  handleClickCart = () => {
+    const { onClickCart, id } = this.props;
+
+    onClickCart(id);
   };
 
   render() {
@@ -27,12 +42,14 @@ class ProductItem extends React.PureComponent {
           <button
             className={classnames(style.btn, style.btnOrder)}
             type="button"
+            onClick={this.handleClickOrder}
           >
             Заказать
           </button>
           <button
             className={classnames(style.btn, style.btnCart)}
             type="button"
+            onClick={this.handleClickCart}
           >
             В корзину
           </button>

@@ -35,7 +35,7 @@ module.exports = {
         assert: 'either',
       },
     ],
-    'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
+    'no-console': ['warn', { allow: ['warn', 'error', 'info'] }],
     'no-param-reassign': ['error', { props: false }],
     'padding-line-between-statements': [
       'error',
