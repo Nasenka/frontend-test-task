@@ -1,9 +1,11 @@
 import classnames from 'classnames';
 import React from 'react';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 
 import API from '../../api/products';
 import Cart from '../Cart/Cart';
 import ProductList from '../ProductList';
+import ProductPage from '../ProductPage/ProductPage';
 
 import style from './App.module.css';
 
@@ -72,29 +74,44 @@ class App extends React.PureComponent {
     );
 
     return (
-      <div>
-        <div className={style.header}>
-          <div className={classnames(style.container, style.containerHeader)}>
-            <div className={style.cart}>
-              <button
-                className={style.cartIcon}
-                type="button"
-                onClick={this.handleCartOpen}
-              >
-                <span className={style.countItem}>{quantityCartItems}</span>
-              </button>
-              <Cart
-                cartItems={cartItems}
-                isOpened={isOpened}
-                products={products}
-                onClose={this.handleClose}
-                onRemove={this.handleRemoveCartItem}
-              />
+      <Router>
+        <>
+          <div className={style.header}>
+            <div className={classnames(style.container, style.containerHeader)}>
+              <div className={style.cart}>
+                <button
+                  className={style.cartIcon}
+                  type="button"
+                  onClick={this.handleCartOpen}
+                >
+                  <span className={style.countItem}>{quantityCartItems}</span>
+                </button>
+                <Cart
+                  cartItems={cartItems}
+                  isOpened={isOpened}
+                  products={products}
+                  onClose={this.handleClose}
+                  onRemove={this.handleRemoveCartItem}
+                />
+              </div>
             </div>
           </div>
-        </div>
-        <ProductList products={products} onClickCart={this.handleClickCart} />
-      </div>
+          <main className={style.productListingWrapper}>
+            <Switch>
+              <Route exact path="/">
+                <ProductList
+                  products={products}
+                  onClickCart={this.handleClickCart}
+                />
+              </Route>
+              <Route component={ProductPage} path="/product-:id" />
+              <Route>
+                <h2>404 Page not found</h2>
+              </Route>
+            </Switch>
+          </main>
+        </>
+      </Router>
     );
   }
 }

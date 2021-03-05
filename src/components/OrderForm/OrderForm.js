@@ -7,7 +7,7 @@ import style from './OrderForm.module.css';
 
 class OrderForm extends React.PureComponent {
   static propTypes = {
-    productId: PropTypes.number,
+    productId: PropTypes.string,
   };
 
   static defaultProps = {

@@ -1,12 +1,13 @@
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import style from './ProductList.module.css';
 
 class ProductItem extends React.PureComponent {
   static propTypes = {
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     src: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
@@ -27,13 +28,15 @@ class ProductItem extends React.PureComponent {
   };
 
   render() {
-    const { price, src, title } = this.props;
+    const { id, price, src, title } = this.props;
 
     return (
       <div className={style.productItem}>
         <img alt={title} className={style.productImg} src={src} />
         <div className={style.productInfo}>
-          <h2 className={style.productTitle}>{title}</h2>
+          <h2 className={style.productTitle}>
+            <Link to={`/product-${id}`}>{title}</Link>
+          </h2>
           <div className={style.productPrice}>
             {`${price.toLocaleString('ru-RU')} руб.`}
           </div>

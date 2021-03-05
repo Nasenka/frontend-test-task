@@ -27,7 +27,7 @@ class Modal extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    if (!document.getElementById('modal')) {
+    if (document.getElementById('modal')) {
       this.body.removeChild(this.container);
     }
   }
