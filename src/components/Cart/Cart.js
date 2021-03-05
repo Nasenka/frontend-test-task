@@ -7,7 +7,7 @@ class Cart extends React.PureComponent {
   static propTypes = {
     cartItems: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.number,
+        id: PropTypes.string,
         quantity: PropTypes.number,
       }),
     ),
@@ -16,7 +16,7 @@ class Cart extends React.PureComponent {
     onRemove: PropTypes.func.isRequired,
     products: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.number.isRequired,
+        id: PropTypes.string.isRequired,
         img: PropTypes.string.isRequired,
         price: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,

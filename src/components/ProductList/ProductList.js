@@ -11,7 +11,7 @@ class ProductList extends React.Component {
   static propTypes = {
     products: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.number.isRequired,
+        id: PropTypes.string.isRequired,
         img: PropTypes.string.isRequired,
         price: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
@@ -58,12 +58,12 @@ class ProductList extends React.Component {
     const { currentItem } = this.state;
 
     return (
-      <main className={style.productListingWrapper}>
+      <>
         <div className={style.productList}>{this.renderProducts()}</div>
         <Modal isOpened={currentItem !== null} onClose={this.handleClose}>
           <OrderForm productId={currentItem} />
         </Modal>
-      </main>
+      </>
     );
   }
 }
